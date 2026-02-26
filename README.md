@@ -1,6 +1,6 @@
 # Aegis402 Shield Protocol
 
-> Pay-per-request blockchain security API for AI agents and DeFi automation. Built on x402 + Web3Antivirus.
+> Blockchain security API for AI agents and DeFi automation. Built on x402. 100 checks/day free, then payment with USDC.
 
 **Production API:** `https://aegis402.com/v1`
 
@@ -8,9 +8,9 @@
 
 ## What It Does
 
-Aegis402 wraps the Web3Antivirus scanning engine into three focused HTTP endpoints with automatic pay-per-use billing via the [x402 protocol](https://docs.x402.org). No API key registration, no subscriptions. The first 100 checks per day are free; after that, clients pay small USDC amounts on Base or Solana and get an immediate response.
+Aegis402 has three focused HTTP endpoints with automatic pay-per-use billing via the [x402 protocol](https://docs.x402.org). No API key registration, no subscriptions. The first 100 checks per day are free; after that, clients pay small USDC amounts on Base or Solana and get an immediate response.
 
-The service is designed to be called by autonomous agents immediately before a transaction is signed — providing a last-mile safety layer without requiring a human in the loop.
+The service is designed to be called by autonomous agents (like OpenClaw) immediately before a transaction is signed — providing a last-mile safety layer without requiring a human in the loop.
 
 ---
 
