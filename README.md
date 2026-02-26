@@ -28,7 +28,64 @@ The service is designed to be called by autonomous agents immediately before a t
 
 ---
 
-## Quick Start
+## Configure Your AI Agent with SKILL.md
+
+`SKILL.md` (in this repo) is the agent instruction manifest for Aegis402. It teaches your AI agent when to call the API, how to interpret results, and what to say to the user. Give it to any LLM-based agent in one step.
+
+### Claude / Claude.ai Projects
+
+Paste the raw URL into your Project Instructions or System Prompt:
+
+```
+Read and follow the skill at https://aegis402.com/skill.md before handling any blockchain transaction.
+```
+
+Or fetch the raw content and include it directly:
+
+```
+https://raw.githubusercontent.com/SwiftAdviser/aegis402/main/SKILL.md
+```
+
+### Claude Code (MCP / CLI)
+
+```bash
+# In your CLAUDE.md or system prompt:
+Before any transaction-related task, read and apply: https://aegis402.com/skill.md
+```
+
+### ELIZA (ai16z framework)
+
+Add to your character file:
+
+```json
+{
+  "skills": [
+    "https://aegis402.com/skill.md"
+  ]
+}
+```
+
+### LangChain / any agent framework
+
+```python
+import requests
+
+skill = requests.get("https://aegis402.com/skill.md").text
+system_prompt = f"You are a DeFi agent. Follow these security instructions:\n\n{skill}"
+```
+
+### What the skill instructs the agent to do
+
+Once loaded, the agent will automatically:
+
+1. Run `GET /v1/check-address/:to` + `POST /v1/simulate-tx` in parallel before any transaction
+2. Block execution and ask for confirmation if risk is `HIGH` or `CRITICAL`
+3. Show a structured safety summary (safe/warning/block) to the user
+4. Pay per-request with USDC via x402 — no API keys needed
+
+---
+
+## Quick Start (direct API usage)
 
 Install the x402 fetch client:
 

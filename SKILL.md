@@ -2,10 +2,10 @@
 name: aegis-security
 version: 1.2.2
 description: Blockchain security API for AI agents. Scan tokens, simulate transactions, check addresses for threats.
-homepage: https://aegis402.xyz
+homepage: https://aegis402.com
 user-invocable: true
 disable-model-invocation: true
-metadata: {"emoji":"🛡️","category":"blockchain-security","api_base":"https://aegis402.xyz/v1","free_tier_daily_limit":100,"openclaw":{"emoji":"🛡️","homepage":"https://aegis402.xyz"}}
+metadata: {"emoji":"🛡️","category":"blockchain-security","api_base":"https://aegis402.com/v1","free_tier_daily_limit":100,"openclaw":{"emoji":"🛡️","homepage":"https://aegis402.com"}}
 ---
 
 # Aegis402 Shield Protocol
