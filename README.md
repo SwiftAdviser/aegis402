@@ -2,9 +2,7 @@
 
 > Pay-per-request blockchain security API for AI agents and DeFi automation. Built on x402 + Web3Antivirus.
 
-**Production API:** `https://aegis402.xyz/v1`
-**API Docs:** https://aegis402.xyz/api.html
-**Skill file (for AI agents):** https://aegis402.xyz/skill.md
+**Production API:** `https://aegis402.com/v1`
 
 ---
 
@@ -52,7 +50,7 @@ const fetch402 = wrapFetchWithPayment(fetch, client);
 
 // Check a token for honeypot
 const res = await fetch402(
-  'https://aegis402.xyz/v1/check-token/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48?chain_id=1',
+  'https://aegis402.com/v1/check-token/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48?chain_id=1',
   { headers: { 'X-Client-Fingerprint': 'my-agent-v1' } }
 );
 console.log(await res.json());
@@ -82,7 +80,7 @@ const fetch402 = wrapFetchWithPayment(fetch, client);
 
 ```bash
 # Check your remaining free calls
-curl https://aegis402.xyz/v1/usage
+curl https://aegis402.com/v1/usage
 ```
 
 ```json
@@ -188,10 +186,10 @@ Scan a token for honeypot mechanics, rug-pull indicators, and other risks.
 
 ```bash
 # EVM token (USDC on Ethereum)
-curl "https://aegis402.xyz/v1/check-token/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48?chain_id=1"
+curl "https://aegis402.com/v1/check-token/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48?chain_id=1"
 
 # Solana token
-curl "https://aegis402.xyz/v1/check-token/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+curl "https://aegis402.com/v1/check-token/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
 ```
 
 **Query params:**
@@ -212,10 +210,10 @@ Check a wallet or contract address for poisoning attacks and reputation flags.
 
 ```bash
 # EVM address
-curl "https://aegis402.xyz/v1/check-address/0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+curl "https://aegis402.com/v1/check-address/0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
 
 # Solana address
-curl "https://aegis402.xyz/v1/check-address/9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM"
+curl "https://aegis402.com/v1/check-address/9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM"
 ```
 
 ---
@@ -244,8 +242,8 @@ Recommended pre-transaction safety check for autonomous agents:
 ```typescript
 // Run all checks in parallel before signing
 const [addressCheck, simulation] = await Promise.all([
-  fetch402(`https://aegis402.xyz/v1/check-address/${to}`),
-  fetch402('https://aegis402.xyz/v1/simulate-tx', {
+  fetch402(`https://aegis402.com/v1/check-address/${to}`),
+  fetch402('https://aegis402.com/v1/simulate-tx', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ from, to, value, data, chain_id }),
@@ -265,9 +263,9 @@ For token swaps and approvals, also run `check-token` in parallel:
 
 ```typescript
 const [addressCheck, tokenCheck, simulation] = await Promise.all([
-  fetch402(`https://aegis402.xyz/v1/check-address/${to}`),
-  fetch402(`https://aegis402.xyz/v1/check-token/${tokenAddress}?chain_id=${chain_id}`),
-  fetch402('https://aegis402.xyz/v1/simulate-tx', { method: 'POST', ... }),
+  fetch402(`https://aegis402.com/v1/check-address/${to}`),
+  fetch402(`https://aegis402.com/v1/check-token/${tokenAddress}?chain_id=${chain_id}`),
+  fetch402('https://aegis402.com/v1/simulate-tx', { method: 'POST', ... }),
 ]);
 ```
 
@@ -295,7 +293,7 @@ All responses include `_meta.requestId` for debugging.
 
 **Wallet applications** — Add built-in scam detection without managing security infrastructure. Pay only when users are active.
 
-**AI agent frameworks** (ELIZA, LangChain, etc.) — Drop-in security tool. The SKILL.md at `https://aegis402.xyz/skill.md` is formatted for direct agent consumption.
+**AI agent frameworks** (ELIZA, LangChain, etc.) — Drop-in security tool. [SKILL.md](https://github.com/SwiftAdviser/aegis402/blob/main/SKILL.md) is formatted for direct agent consumption.
 
 **MEV bots and arbitrage agents** — Pre-simulate transactions to avoid traps and losing execution to sandwiching on malicious contracts.
 
@@ -349,7 +347,7 @@ DEV_MODE=true bun --watch src/index.ts
 Agents and developers can submit structured feedback via the API (free, non-consuming):
 
 ```bash
-curl -X POST "https://aegis402.xyz/v1/feedback" \
+curl -X POST "https://aegis402.com/v1/feedback" \
   -H "Content-Type: application/json" \
   -d '{
     "kind": "issue",
@@ -367,9 +365,7 @@ curl -X POST "https://aegis402.xyz/v1/feedback" \
 
 ## Links
 
-- Website: https://aegis402.xyz
-- API Docs: https://aegis402.xyz/api.html
-- Skill file (AI agents): https://aegis402.xyz/skill.md
+- Production API: https://aegis402.com/v1
 - x402 Protocol docs: https://docs.x402.org
 - x402 ecosystem: https://www.x402.org/ecosystem
 
